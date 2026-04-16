@@ -75,7 +75,7 @@
     .player-wrap vturb-smartplayer { display: block; width: 100%; }
 
     /* botão — oculto até min 20 */
-    .esconder { display: revert; /* REVIEW MODE — trocar por display:none ao publicar */ }
+    .esconder { display: none; }
 
     .btn-cta {
       display: inline-block;
@@ -677,7 +677,7 @@ Além do conteúdo, sua trajetória me inspirou muito. Ver que é possível cons
   var player = document.querySelector("vturb-smartplayer");
   if (player) {
     player.addEventListener("player:ready", function () {
-      player.displayElements(0, { persist: true });
+      player.displayElements(1200, { persist: true });
     });
   }
 
