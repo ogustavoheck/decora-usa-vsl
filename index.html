@@ -6,743 +6,456 @@
   <title>Decora USA Business — Dani Guardini</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --teal-dark:   #1E6B5E;
-      --teal-mid:    #2A8A78;
-      --teal-light:  #3CADA0;
-      --teal-pale:   #E4F4F2;
-      --teal-xpale:  #F0FAF9;
-      --gold:        #C8A96E;
-      --text-dark:   #1A2E2A;
-      --text-mid:    #3D5450;
-      --text-light:  #6B8C87;
-      --white:       #FFFFFF;
-      --radius:      12px;
-      --shadow:      0 4px 32px rgba(30,107,94,.12);
+      --green:      #1E6B5E;
+      --green-dark: #0F3D35;
+      --green-mid:  #2A8A78;
+      --green-lite: #7EE0D4;
+      --bg-light:   #F0FAF9;
+      --text:       #1A2E2A;
+      --text-mid:   #3D5450;
+      --text-muted: #6B8C87;
+      --white:      #FFFFFF;
+      --radius:     10px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Montserrat', sans-serif;
-      color: var(--text-dark);
+      color: var(--text);
       background: var(--white);
-      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── FOLD ÚNICO — headline + sub + vídeo ─────────── */
-    .fold {
-      background: linear-gradient(160deg, #0F3D35 0%, #1E6B5E 60%, #2A8A78 100%);
-      padding: 28px 20px 32px;
+    /* ────────────────────────────────────────────────────
+       BLOCO 1 — headline + sub + vídeo + botão
+    ──────────────────────────────────────────────────── */
+    .b1 {
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 60%, var(--green-mid) 100%);
+      padding: 24px 16px 28px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .fold::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
     }
 
-    .fold-inner {
-      position: relative;
-      max-width: 800px;
+    .b1-inner {
+      max-width: 780px;
       margin: 0 auto;
     }
 
-    .fold h1 {
-      font-size: clamp(22px, 3.2vw, 38px);
+    .b1 h1 {
+      font-size: clamp(20px, 2.8vw, 34px);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.2;
+      line-height: 1.22;
       margin-bottom: 10px;
     }
-    .fold h1 em { font-style: normal; color: #7EE0D4; }
+    .b1 h1 em { font-style: normal; color: var(--green-lite); }
 
-    .fold-sub {
-      font-size: clamp(13px, 1.4vw, 16px);
+    .b1-sub {
+      font-size: clamp(13px, 1.3vw, 15px);
       color: rgba(255,255,255,.8);
-      max-width: 640px;
-      margin: 0 auto 18px;
-      font-weight: 400;
-      line-height: 1.55;
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto 16px;
     }
-    .fold-sub strong { color: #fff; font-weight: 600; }
+    .b1-sub strong { color: var(--white); }
 
-    .vsl-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .vsl-wrapper {
-      position: relative;
-      background: #000;
+    /* player */
+    .player-wrap {
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 12px 60px rgba(30,107,94,.25);
+      box-shadow: 0 10px 48px rgba(0,0,0,.35);
+      background: #000;
+      margin-bottom: 16px;
     }
+    .player-wrap vturb-smartplayer { display: block; width: 100%; }
 
-    .vsl-wrapper vturb-smartplayer {
-      display: block;
-      width: 100%;
-    }
-
-    .vsl-wrapper iframe,
-    .vsl-wrapper video {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* ── CTA BOX (aparece no minuto 20 via Vturb delay) ── */
+    /* botão — oculto até min 20 */
     .esconder { display: none; }
-
-    .cta-box {
-      margin-top: 40px;
-      background: var(--white);
-      border: 2px solid var(--teal-light);
-      border-radius: var(--radius);
-      padding: 40px 36px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .cta-price-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 8px;
-    }
-
-    .cta-original {
-      font-size: 15px;
-      color: var(--text-light);
-      text-decoration: line-through;
-      margin-bottom: 4px;
-    }
-
-    .cta-price {
-      font-size: clamp(36px, 6vw, 54px);
-      font-weight: 900;
-      color: var(--teal-dark);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .cta-price span {
-      font-size: .45em;
-      font-weight: 600;
-      vertical-align: super;
-    }
-
-    .cta-installments {
-      font-size: 14px;
-      color: var(--text-mid);
-      margin-bottom: 28px;
-    }
 
     .btn-cta {
       display: inline-block;
-      background: linear-gradient(135deg, var(--teal-mid), var(--teal-dark));
+      background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
       color: var(--white);
       font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
+      font-size: clamp(14px, 1.5vw, 18px);
       font-weight: 800;
-      letter-spacing: .5px;
       text-transform: uppercase;
+      letter-spacing: .5px;
       text-decoration: none;
-      padding: 20px 48px;
+      padding: 18px 40px;
       border-radius: 100px;
-      border: none;
-      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,0,0,.3);
       transition: transform .15s, box-shadow .15s;
-      box-shadow: 0 6px 24px rgba(30,107,94,.35);
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
     }
-    .btn-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 32px rgba(30,107,94,.45);
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,.4); }
+
+    .b1-guarantee {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.5);
     }
 
-    .cta-guarantee {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--text-light);
-    }
-    .cta-guarantee svg { flex-shrink: 0; }
-
-    /* ── TESTIMONIALS ─────────────────────────────────── */
-    .testimonials-section {
-      padding: 80px 20px;
-      background: var(--white);
-    }
-
-    .section-label {
+    /* ────────────────────────────────────────────────────
+       BLOCO 2 — depoimentos
+    ──────────────────────────────────────────────────── */
+    .b2 {
+      background: var(--bg-light);
+      padding: 64px 20px;
       text-align: center;
+    }
+
+    .section-tag {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--teal-light);
-      margin-bottom: 12px;
+      color: var(--green-mid);
+      margin-bottom: 8px;
     }
 
     .section-title {
-      text-align: center;
-      font-size: clamp(24px, 4vw, 38px);
+      font-size: clamp(22px, 3vw, 34px);
       font-weight: 800;
-      color: var(--text-dark);
       line-height: 1.25;
-      margin-bottom: 12px;
+      color: var(--text);
+      margin-bottom: 40px;
     }
+    .section-title em { font-style: normal; color: var(--green); }
 
-    .section-title em {
-      font-style: normal;
-      color: var(--teal-dark);
-    }
-
-    .section-sub {
-      text-align: center;
-      font-size: 16px;
-      color: var(--text-mid);
-      max-width: 580px;
-      margin: 0 auto 56px;
-      line-height: 1.65;
-    }
-
-    .testimonials-grid {
+    /* grid de prints — imagens lado a lado */
+    .depo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
       max-width: 1080px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
     }
 
-    .testimonial-card {
-      background: var(--teal-xpale);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 2px 16px rgba(30,107,94,.08);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(30,107,94,.15);
-    }
-
-    .testimonial-video {
-      position: relative;
-      aspect-ratio: 9 / 16;
-      background: var(--teal-dark);
-      overflow: hidden;
-    }
-
-    .testimonial-video video {
+    .depo-img {
       width: 100%;
-      height: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
+      display: block;
       object-fit: cover;
     }
 
-    /* play overlay */
-    .play-overlay {
-      position: absolute;
-      inset: 0;
+    /* placeholder enquanto não tem imagem */
+    .depo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #D6EFEC;
+      border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,.3);
-      cursor: pointer;
-      transition: background .2s;
-    }
-    .play-overlay:hover { background: rgba(0,0,0,.15); }
-    .play-overlay .play-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,.3);
-      transition: transform .2s;
-    }
-    .play-overlay:hover .play-icon { transform: scale(1.1); }
-    .play-overlay .play-icon svg { margin-left: 4px; }
-
-    .testimonial-info {
-      padding: 20px;
-    }
-    .testimonial-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 2px;
-    }
-    .testimonial-location {
       font-size: 12px;
-      color: var(--text-light);
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-align: center;
+      padding: 12px;
+      border: 2px dashed #A8D8D2;
     }
 
-    /* ── BIO SECTION ──────────────────────────────────── */
-    .bio-section {
-      background: var(--teal-pale);
-      padding: 80px 20px;
+    .b2 .btn-cta {
+      background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
     }
 
-    .bio-inner {
-      max-width: 1000px;
+    /* ────────────────────────────────────────────────────
+       BLOCO 3 — bio Dani
+    ──────────────────────────────────────────────────── */
+    .b3 {
+      background: var(--white);
+      padding: 64px 20px;
+    }
+
+    .b3-inner {
+      max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 64px;
-      align-items: center;
+      grid-template-columns: 320px 1fr;
+      gap: 56px;
+      align-items: start;
     }
 
-    .bio-photo-wrap {
-      position: relative;
-    }
-
-    .bio-photo {
+    .b3-photo {
       width: 100%;
       border-radius: var(--radius);
+      box-shadow: 0 4px 32px rgba(30,107,94,.15);
       display: block;
-      box-shadow: var(--shadow);
       object-fit: cover;
       object-position: top center;
       aspect-ratio: 3/4;
     }
 
-    .bio-badge {
+    .b3-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: var(--teal-dark);
+      gap: 6px;
+      background: var(--green);
       color: var(--white);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    .bio-name {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 800;
-      color: var(--text-dark);
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-
-    .bio-name em {
-      font-style: italic;
-      color: var(--teal-dark);
-      font-family: 'Lora', serif;
-    }
-
-    .bio-text {
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.75;
       margin-bottom: 16px;
     }
 
-    .bio-credentials {
+    .b3 h2 {
+      font-size: clamp(24px, 2.8vw, 36px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--text);
+    }
+    .b3 h2 em { font-style: italic; color: var(--green); font-family: 'Lora', serif; }
+
+    .b3-text {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .b3-list {
       list-style: none;
-      margin-top: 24px;
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-
-    .bio-credentials li {
+    .b3-list li {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       font-size: 14px;
       color: var(--text-mid);
       line-height: 1.5;
+      align-items: flex-start;
     }
-
-    .bio-credentials li::before {
+    .b3-list li::before {
       content: '';
-      width: 20px;
-      height: 20px;
-      background: var(--teal-dark);
-      border-radius: 50%;
+      width: 18px;
+      height: 18px;
       flex-shrink: 0;
-      margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10L8.5 13.5L15 7' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-color: var(--teal-dark);
-      background-repeat: no-repeat;
-      background-position: center;
+      margin-top: 2px;
+      border-radius: 50%;
+      background: var(--green) url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 9l3.5 3.5L14 6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center;
     }
 
-    /* ── SECOND CTA ───────────────────────────────────── */
-    .cta-bottom {
-      background: linear-gradient(135deg, #0F3D35 0%, #1E6B5E 60%, #2A8A78 100%);
-      padding: 80px 20px;
+    /* ────────────────────────────────────────────────────
+       BLOCO 4 — FAQ
+    ──────────────────────────────────────────────────── */
+    .b4 {
+      background: var(--bg-light);
+      padding: 64px 20px;
+    }
+
+    .b4-inner {
+      max-width: 720px;
+      margin: 0 auto;
       text-align: center;
     }
 
-    .cta-bottom h2 {
-      font-size: clamp(24px, 4vw, 40px);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.25;
-      max-width: 700px;
-      margin: 0 auto 16px;
-    }
-    .cta-bottom h2 em {
-      font-style: normal;
-      color: #7EE0D4;
+    .b4-inner .section-title { margin-bottom: 32px; }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+      text-align: left;
+      overflow: hidden;
     }
 
-    .cta-bottom p {
-      font-size: 16px;
-      color: rgba(255,255,255,.78);
-      max-width: 540px;
-      margin: 0 auto 40px;
-      line-height: 1.65;
-    }
-
-    .cta-bottom-price-original {
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      font-family: 'Montserrat', sans-serif;
       font-size: 15px;
-      color: rgba(255,255,255,.5);
-      text-decoration: line-through;
-      margin-bottom: 4px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
     }
+    .faq-q:hover { color: var(--green); }
 
-    .cta-bottom-price {
-      font-size: clamp(40px, 7vw, 64px);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .cta-bottom-price span {
-      font-size: .4em;
-      font-weight: 600;
-      vertical-align: super;
-    }
-
-    .cta-bottom-installments {
-      font-size: 14px;
-      color: rgba(255,255,255,.65);
-      margin-bottom: 36px;
-    }
-
-    .cta-bottom .btn-cta {
-      max-width: 520px;
-      background: linear-gradient(135deg, #3CADA0, #2A8A78);
-    }
-
-    .cta-bottom-guarantee {
-      margin-top: 24px;
-      font-size: 13px;
-      color: rgba(255,255,255,.55);
+    .faq-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--bg-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      transition: transform .25s, background .2s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--green);
+    }
+    .faq-item.open .faq-icon svg path { stroke: white; }
+
+    .faq-a {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      border-top: 1px solid var(--bg-light);
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    .b4 .btn-cta {
+      margin-top: 40px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
     }
 
-    /* ── FOOTER ───────────────────────────────────────── */
+    /* ────────────────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────────────────── */
     footer {
-      background: var(--text-dark);
-      padding: 32px 20px;
+      background: var(--text);
+      padding: 28px 20px;
       text-align: center;
       font-size: 12px;
       color: rgba(255,255,255,.35);
-      line-height: 1.7;
+      line-height: 1.8;
     }
-    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+    footer a { color: rgba(255,255,255,.45); text-decoration: none; }
 
-    /* ── RESPONSIVE ───────────────────────────────────── */
-    @media (max-width: 680px) {
-      .bio-inner {
+    /* ────────────────────────────────────────────────────
+       RESPONSIVO
+    ──────────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .b3-inner {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 28px;
       }
-      .bio-photo-wrap { max-width: 280px; margin: 0 auto; }
-      .cta-box { padding: 28px 20px; }
+      .b3-photo { max-width: 260px; margin: 0 auto; }
     }
   </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════
-     FOLD ÚNICO — headline + sub + VSL + CTA
-════════════════════════════════════════════ -->
-<section class="fold">
-  <div class="fold-inner">
+<!-- ══════════════════════════════════════════════════════
+     BLOCO 1 — headline + sub + vídeo + botão
+══════════════════════════════════════════════════════ -->
+<section class="b1">
+  <div class="b1-inner">
 
     <h1>
       Como <em>arquitetas e designers</em> brasileiras<br>
-      estão conquistando clientes e construindo<br>
-      um business <em>lucrativo nos EUA</em>
+      constroem um business <em>lucrativo nos EUA</em>
     </h1>
 
-    <p class="fold-sub">
-      Mesmo sem diploma validado, sem inglês fluente e sem equipe.
-      <strong>Assista ao vídeo e descubra a estrutura estratégica que já transformou dezenas de carreiras.</strong>
+    <p class="b1-sub">
+      Mesmo sem diploma validado, sem inglês fluente e sem equipe grande.
+      <strong>Assista ao vídeo completo.</strong>
     </p>
 
-  </div>
-  <div class="vsl-container">
-
-    <!-- ── VÍDEO ──────────────────────────────
-         Substitua o src do <iframe> pelo embed
-         real do seu vídeo (Vturb, YouTube, etc.)
-    ──────────────────────────────────────────── -->
-    <div class="vsl-wrapper" id="vslWrapper">
-      <vturb-smartplayer id="vid-69e1200e98c215d1693be719" style="display: block; margin: 0 auto; width: 100%;"></vturb-smartplayer>
+    <div class="player-wrap">
+      <vturb-smartplayer id="vid-69e1200e98c215d1693be719" style="display:block;width:100%;"></vturb-smartplayer>
       <script type="text/javascript">
-        var s=document.createElement("script");
-        s.src="https://scripts.converteai.net/2bbe0094-7397-436c-ad6b-097074f23db9/players/69e1200e98c215d1693be719/v4/player.js";
-        s.async=!0;
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/2bbe0094-7397-436c-ad6b-097074f23db9/players/69e1200e98c215d1693be719/v4/player.js";
+        s.async = true;
         document.head.appendChild(s);
       </script>
     </div>
 
-    <!-- ── CTA BOX (aparece no minuto 20 via Vturb delay) ── -->
-    <div class="cta-box esconder" id="ctaBox">
-      <p class="cta-price-label">Acesso imediato · Oferta especial</p>
-      <p class="cta-original">De $1.497</p>
-      <p class="cta-price"><span>$</span>997</p>
-      <p class="cta-installments">ou 12× de R$ 128,50 no cartão</p>
-
-      <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta" id="ctaBtn">
+    <div class="esconder" id="ctaWrap">
+      <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta">
         Quero minha vaga no Decora USA →
       </a>
-
-      <div class="cta-guarantee">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L3 6V12C3 16.97 7.02 21.64 12 23C16.98 21.64 21 16.97 21 12V6L12 2Z" stroke="#2A8A78" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M9 12L11 14L15 10" stroke="#2A8A78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>7 dias de garantia incondicional. Se não gostar, devolvemos 100% do seu dinheiro.</span>
-      </div>
+      <p class="b1-guarantee">7 dias de garantia incondicional · Sem risco</p>
     </div>
 
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════════ -->
-<section class="testimonials-section" id="depoimentos">
-  <div class="section-label">Resultados reais</div>
+<!-- ══════════════════════════════════════════════════════
+     BLOCO 2 — depoimentos
+══════════════════════════════════════════════════════ -->
+<section class="b2">
+  <p class="section-tag">Resultados reais</p>
   <h2 class="section-title">
-    Já são dezenas de arquitetas e designers<br>
+    Já são dezenas de profissionais<br>
     <em>prosperando nos EUA</em>
   </h2>
-  <p class="section-sub">
-    De diferentes estados americanos — e até do Brasil atendendo clientes internacionais.
-    Ouça quem já fez o caminho.
-  </p>
 
-  <div class="testimonials-grid">
+  <div class="depo-grid">
+    <!--
+      INSTRUÇÃO: substitua cada .depo-placeholder por:
+      <img src="depo-1.jpg" alt="Depoimento" class="depo-img" />
 
-    <!-- Depoimento 1: Carol -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoCarol">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/Carol.mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Carol</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Virgínia, EUA
-        </p>
-      </div>
-    </div>
-
-    <!-- Depoimento 2: Carol 2 -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoCarol2">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/Carol 2.mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Carol</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Virgínia, EUA
-        </p>
-      </div>
-    </div>
-
-    <!-- Depoimento 3: Phellipe -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoPhellipe">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/Phellipe.mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Phellipe</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Estados Unidos
-        </p>
-      </div>
-    </div>
-
-    <!-- Depoimento 4: Rodrigo -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoRodrigo">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/Rodrigo/[COLE VIDEO AQUI].mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Rodrigo</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Seattle, EUA
-        </p>
-      </div>
-    </div>
-
-    <!-- Depoimento 5: Ana Claudia -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoAna">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/Ana  Claudia/[COLE VIDEO AQUI].mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Ana Claudia</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Estados Unidos
-        </p>
-      </div>
-    </div>
-
-    <!-- Depoimento 6: Vídeo extra -->
-    <div class="testimonial-card">
-      <div class="testimonial-video" id="videoExtra">
-        <video preload="metadata" poster="">
-          <source src="../../../../../../../Library/CloudStorage/GoogleDrive-contato@ogustavoheck.com.br/Drives compartilhados/GHx MKT LTDA/3. OPERAÇÃO PARA CLIENTES/🟡 CLIENTES EM STAND BY/🟢 Studio DG/02.  Assets/Depoimentos/VIDEO-2025-12-04-12-53-04.mp4" type="video/mp4" />
-        </video>
-        <div class="play-overlay" onclick="playVideo(this)">
-          <div class="play-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M8 5L19 12L8 19V5Z" fill="#1E6B5E"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-info">
-        <p class="testimonial-name">Aluna Decora USA</p>
-        <p class="testimonial-location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#6B8C87"/></svg>
-          Estados Unidos
-        </p>
-      </div>
-    </div>
-
+      Coloque os arquivos de imagem na mesma pasta do HTML.
+    -->
+    <div class="depo-placeholder">Depoimento 1<br><small>Substituir pela imagem</small></div>
+    <div class="depo-placeholder">Depoimento 2<br><small>Substituir pela imagem</small></div>
+    <div class="depo-placeholder">Depoimento 3<br><small>Substituir pela imagem</small></div>
+    <div class="depo-placeholder">Depoimento 4<br><small>Substituir pela imagem</small></div>
+    <div class="depo-placeholder">Depoimento 5<br><small>Substituir pela imagem</small></div>
+    <div class="depo-placeholder">Depoimento 6<br><small>Substituir pela imagem</small></div>
   </div>
+
+  <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta">
+    Quero minha vaga no Decora USA →
+  </a>
+
 </section>
 
 
-<!-- ════════════════════════════════════════════
-     BIO — SEU E DANI
-════════════════════════════════════════════ -->
-<section class="bio-section">
-  <div class="bio-inner">
+<!-- ══════════════════════════════════════════════════════
+     BLOCO 3 — bio Dani Guardini
+══════════════════════════════════════════════════════ -->
+<section class="b3">
+  <div class="b3-inner">
 
-    <div class="bio-photo-wrap">
-      <img src="dani.webp" alt="Dani Guardini — Arquiteta e criadora do Decora USA" class="bio-photo" />
-    </div>
+    <img src="dani.webp" alt="Dani Guardini" class="b3-photo" />
 
-    <div class="bio-content">
-      <div class="bio-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#7EE0D4"/></svg>
-        Quem é a Dani
+    <div>
+      <div class="b3-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#7EE0D4"/></svg>
+        Sou a Dani
       </div>
 
-      <h2 class="bio-name">
-        Arquiteta, professora<br>e <em>criadora do Decora USA</em>
+      <h2>
+        Arquiteta, professora<br>
+        e <em>criadora do Decora USA</em>
       </h2>
 
-      <p class="bio-text">
-        Com quase 30 anos de escritório — em Campinas desde os anos 90 e em Miami desde 2014 — Dani Guardini construiu uma das trajetórias mais sólidas do design de interiores brasileiro no mercado americano.
+      <p class="b3-text">
+        Com quase 30 anos de escritório — Campinas desde os anos 90 e Miami desde 2014 — construí uma das trajetórias mais sólidas do design de interiores brasileiro no mercado americano.
       </p>
-      <p class="bio-text">
-        Ela sabe o que é começar do zero num país diferente: seu primeiro visto foi negado, seus primeiros projetos nos EUA eram pequenos, e durante anos ela reaprendeu tudo do zero. Mas quando organizou estrategicamente o business, os resultados mudaram radicalmente.
+      <p class="b3-text">
+        Sei o que é começar do zero num país diferente: meu primeiro visto foi negado, meus primeiros projetos eram pequenos. Mas quando organizei estrategicamente o meu business, tudo mudou. Em 2024 fiz apenas 4 projetos — e faturei <strong>$1 milhão de dólares</strong>.
       </p>
-      <p class="bio-text">
-        Em 2024, fez apenas 4 projetos — e faturou <strong>$1 milhão de dólares</strong>. Um deles começou por uma mensagem no Instagram.
+      <p class="b3-text">
+        Hoje ensino outras arquitetas e designers a fazerem o mesmo — com estrutura, não com sorte.
       </p>
 
-      <ul class="bio-credentials">
+      <ul class="b3-list">
         <li>Escritório em Campinas há quase 30 anos e em Miami desde 2014</li>
         <li>Professora de pós-graduação da PUC-RS e do Instituto Marangoni Miami</li>
-        <li>Premiada pela American Society of Interior Design (ASID) e ICFF em Nova York</li>
-        <li>Projetos nos Aston Martin Residences, Trump Towers, Ritz Carlton e outros ícones de Miami</li>
-        <li>Autora dos livros <em>Arquitetura Dinâmica 1</em> e <em>Arquitetura Dinâmica 2</em></li>
+        <li>Premiada pela ASID (American Society of Interior Design) e ICFF Nova York</li>
+        <li>Projetos nos Aston Martin Residences, Trump Towers e Ritz Carlton Miami</li>
+        <li>Autora de <em>Arquitetura Dinâmica 1</em> e <em>Arquitetura Dinâmica 2</em></li>
         <li>Cidadã americana com mais de 10 anos de escritório nos EUA</li>
       </ul>
     </div>
@@ -751,73 +464,102 @@
 </section>
 
 
-<!-- ════════════════════════════════════════════
-     CTA FINAL
-════════════════════════════════════════════ -->
-<section class="cta-bottom">
-  <h2>
-    Pronta para parar de improvisar<br>
-    e construir um business <em>de verdade</em> nos EUA?
-  </h2>
-  <p>
-    Tudo que Dani levou 10 anos para aprender —
-    organizado em aulas práticas para você aplicar agora.
-  </p>
+<!-- ══════════════════════════════════════════════════════
+     BLOCO 4 — FAQ
+══════════════════════════════════════════════════════ -->
+<section class="b4">
+  <div class="b4-inner">
 
-  <p class="cta-bottom-price-original">De $1.497</p>
-  <p class="cta-bottom-price"><span>$</span>997</p>
-  <p class="cta-bottom-installments">ou 12× de R$ 128,50 no cartão</p>
+    <p class="section-tag">Perguntas frequentes</p>
+    <h2 class="section-title">Ainda tem dúvidas?</h2>
 
-  <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta">
-    Quero minha vaga no Decora USA →
-  </a>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Preciso ter diploma validado nos EUA para comprar o curso?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">Não. Na maioria dos estados americanos você não precisa de diploma validado para trabalhar com design de interiores. O curso explica exatamente como funciona em cada estado e como você pode atuar legalmente desde o início.</div>
+    </div>
 
-  <div class="cta-bottom-guarantee">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <path d="M12 2L3 6V12C3 16.97 7.02 21.64 12 23C16.98 21.64 21 16.97 21 12V6L12 2Z" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M9 12L11 14L15 10" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    7 dias de garantia incondicional · Sem risco, sem burocracia
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Preciso falar inglês fluente?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">Não. Muitas alunas começam atendendo clientes brasileiros que têm imóveis nos EUA — sem precisar de inglês avançado. O inglês vem naturalmente conforme você cresce. O curso te mostra como estruturar esse caminho de forma inteligente.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Ainda não me mudei para os EUA. Faz sentido comprar agora?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">Sim — e essa é a melhor hora para se preparar. Quem chega nos EUA com um plano estruturado avança meses à frente de quem chega sem direção. O Decora USA foi feito exatamente para isso: para você chegar preparada, não perdida.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Quanto tempo tenho acesso ao conteúdo?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">Acesso vitalício. Você pode assistir no seu ritmo, rever quando quiser e ainda acompanhar as aulas novas que entram na plataforma ao longo do tempo.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        E se eu não gostar? Tem garantia?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">Sim. Você tem 7 dias de garantia incondicional. Se por qualquer motivo sentir que o curso não é para você, basta pedir o cancelamento e receber 100% do valor de volta — sem burocracia e sem precisar dar justificativa.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Como é feito o pagamento?
+        <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="#1E6B5E" stroke-width="2" stroke-linecap="round"/></svg></div>
+      </button>
+      <div class="faq-a">O pagamento é feito pela plataforma Hotmart, com total segurança. Você pode pagar em dólares ($997 à vista) ou em reais parcelado no cartão (12× de R$ 128,50). O acesso é liberado imediatamente após a confirmação.</div>
+    </div>
+
+    <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta">
+      Quero minha vaga no Decora USA →
+    </a>
+
   </div>
 </section>
 
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════
      FOOTER
-════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════ -->
 <footer>
   <p>© 2025 Dani Guardini · Decora USA Business · Todos os direitos reservados</p>
-  <p style="margin-top:8px">
-    <a href="#">Política de Privacidade</a> &nbsp;·&nbsp;
-    <a href="#">Termos de Uso</a>
+  <p style="margin-top:6px">
+    <a href="#">Política de Privacidade</a> &nbsp;·&nbsp; <a href="#">Termos de Uso</a>
   </p>
-  <p style="margin-top:12px;font-size:11px">
-    Os resultados apresentados nos depoimentos são individuais e podem variar conforme o perfil,
-    dedicação e contexto de cada aluno. Não garantimos resultados específicos.
+  <p style="margin-top:10px;font-size:11px;max-width:600px;margin-left:auto;margin-right:auto">
+    Os resultados apresentados nos depoimentos são individuais e podem variar conforme o perfil, dedicação e contexto de cada aluno.
   </p>
 </footer>
 
 
-<!-- ════════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════════ -->
 <script>
-  /* ── Delay Vturb — minuto 20 (1200 segundos) ──────── */
-  var delaySeconds = 1200;
+  /* ── Delay Vturb — minuto 20 (1200s) ── */
   var player = document.querySelector("vturb-smartplayer");
-  player.addEventListener("player:ready", function () {
-    player.displayElements(delaySeconds, { persist: true });
-  });
+  if (player) {
+    player.addEventListener("player:ready", function () {
+      player.displayElements(1200, { persist: true });
+    });
+  }
 
-  /* ── Play nos depoimentos ─────────────────────────── */
-  function playVideo(overlay) {
-    var wrapper = overlay.parentElement;
-    var video = wrapper.querySelector('video');
-    if (video) {
-      overlay.style.display = 'none';
-      video.controls = true;
-      video.play();
-    }
+  /* ── FAQ accordion ── */
+  function toggleFaq(btn) {
+    var item = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    if (!isOpen) item.classList.add('open');
   }
 </script>
 
