@@ -129,38 +129,65 @@
     }
     .section-title em { font-style: normal; color: var(--green); }
 
-    /* grid de prints — imagens lado a lado */
+    /* grid masonry de depoimentos */
     .depo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
+      columns: 3;
+      column-gap: 16px;
       max-width: 1080px;
       margin: 0 auto 40px;
     }
 
-    .depo-img {
-      width: 100%;
+    @media (max-width: 780px) { .depo-grid { columns: 2; } }
+    @media (max-width: 480px) { .depo-grid { columns: 1; } }
+
+    .depo-card {
+      break-inside: avoid;
+      background: var(--white);
+      border: 1.5px solid #C8E8E4;
       border-radius: var(--radius);
-      box-shadow: 0 2px 16px rgba(0,0,0,.08);
-      display: block;
-      object-fit: cover;
+      padding: 22px 20px 18px;
+      margin-bottom: 16px;
+      text-align: left;
     }
 
-    /* placeholder enquanto não tem imagem */
-    .depo-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #D6EFEC;
-      border-radius: var(--radius);
+    .depo-text {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.72;
+      margin-bottom: 18px;
+      white-space: pre-line;
+    }
+
+    .depo-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .depo-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .depo-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .depo-handle {
       font-size: 12px;
       color: var(--text-muted);
-      font-weight: 600;
-      text-align: center;
-      padding: 12px;
-      border: 2px dashed #A8D8D2;
     }
 
     .b2 .btn-cta {
@@ -400,18 +427,120 @@
   </h2>
 
   <div class="depo-grid">
-    <!--
-      INSTRUÇÃO: substitua cada .depo-placeholder por:
-      <img src="depo-1.jpg" alt="Depoimento" class="depo-img" />
 
-      Coloque os arquivos de imagem na mesma pasta do HTML.
-    -->
-    <div class="depo-placeholder">Depoimento 1<br><small>Substituir pela imagem</small></div>
-    <div class="depo-placeholder">Depoimento 2<br><small>Substituir pela imagem</small></div>
-    <div class="depo-placeholder">Depoimento 3<br><small>Substituir pela imagem</small></div>
-    <div class="depo-placeholder">Depoimento 4<br><small>Substituir pela imagem</small></div>
-    <div class="depo-placeholder">Depoimento 5<br><small>Substituir pela imagem</small></div>
-    <div class="depo-placeholder">Depoimento 6<br><small>Substituir pela imagem</small></div>
+    <div class="depo-card">
+      <p class="depo-text">"O Decora USA está sendo um passo essencial para o crescimento da minha jornada como designer de interiores.
+
+Em pouco tempo, ganhei clareza de posicionamento, segurança para atender meus clientes e uma visão estratégica que eu nunca tive antes.
+
+Já nas primeiras aulas que assisti, recebi uma verdadeira enciclopédia de conhecimento, com conteúdos práticos e inspiradores. Já tinha vivido uma grande transformação no Decora Miami, mas agora, com o Decora USA, me sinto pronta para crescer de verdade. E o melhor: o Decora não é só um curso — é uma comunidade vibrante, cheia de conexões e oportunidades reais."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">LK</div>
+        <div>
+          <p class="depo-name">LÍLIA KUCHMII</p>
+          <p class="depo-handle">@thelotedesignstudio</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"Estou achando o curso sensacional! ♥
+
+Fiquei algumas semanas no Brasil e estou um pouco atrasada nas aulas, mas super animada pra retomar.
+
+Mesmo com o pouco que consegui ver até agora, já sinto o quanto o Decora USA entrega um conteúdo valioso e necessário pra quem quer entrar com força no mercado americano.
+
+É inspirador e direto ao ponto. Estou amando!"</p>
+      <div class="depo-author">
+        <div class="depo-avatar">FC</div>
+        <div>
+          <p class="depo-name">Fabíola Caramelo</p>
+          <p class="depo-handle">@fc_home_designs</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"Dani, preciso te agradecer! Em menos de 15 dias depois da aula, a chave simplesmente virou!
+
+Já estou fechando novos projetos, sem nem ter tido tempo de ativar meus contatos, os clientes começaram a me procurar sozinhos!
+
+E o melhor: já montei minha equipe completa. É como se tudo tivesse começado a fluir de uma vez.
+
+Sinto que estou vivendo uma nova fase, cheia de energia, de movimento, de oportunidades. É real: quando a gente se posiciona com clareza, as coisas começam a acontecer.
+
+Dani, você é uma deusa! Muito obrigada por tudo, sempre!"</p>
+      <div class="depo-author">
+        <div class="depo-avatar">DB</div>
+        <div>
+          <p class="depo-name">Daniela Brunetti</p>
+          <p class="depo-handle">@danielabrunetti.designer</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"Dani, suas aulas têm sido transformadoras! Nem lembro como cheguei no seu Instagram, mas ainda bem que cheguei até você.
+
+Ficamos 30 dias nos Estados Unidos entre dezembro e janeiro, visitando minha cunhada em Coconut Creek, e foi durante essa viagem que começamos a sonhar de verdade com uma mudança para lá.
+
+Em abril, entramos para o Decora USA e, desde então, temos aprendido muito com você. Os conteúdos sobre termos técnicos, estilo americano, processos, permits e as diferenças entre os mercados brasileiro e americano têm nos dado clareza e direção.
+
+Fundamos nosso escritório em Maringá em 2017, hoje estamos em Itapema (SC), participamos de duas CASACOR e agora nos preparamos para aplicar o visto e construir uma carreira nos EUA. Seu trabalho tem sido essencial nessa transição — você realmente nasceu para ensinar!"</p>
+      <div class="depo-author">
+        <div class="depo-avatar">PP</div>
+        <div>
+          <p class="depo-name">Phellipe Paroschi</p>
+          <p class="depo-handle">@phellipeparoschi</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"O Decora USA está sendo um divisor de águas na minha vida! Moro há 4 anos nos EUA e, depois de pausar minha carreira para acompanhar meu marido e viver o maternar, estou finalmente conseguindo retomá-la. Mesmo com filhos pequenos, o curso está me dando todo o conhecimento e os atalhos que eu precisava para voltar a atuar com segurança.
+
+O conteúdo é muito bem estruturado, os parceiros são incríveis, e essa rede de networking que está se formando é um presente!
+
+Quero seguir conectada com essa comunidade e ver ainda mais colegas brasileiros ocupando espaço no mercado americano com excelência.
+
+Obrigada, Dani, pela sua dedicação! Estou animada pelas próximas aulas e espero te conhecer pessoalmente em breve!"</p>
+      <div class="depo-author">
+        <div class="depo-avatar">CM</div>
+        <div>
+          <p class="depo-name">Carol Manzi</p>
+          <p class="depo-handle">@carolmanzinteriors</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"Muito obrigada. Mesmo já morando em Miami e conhecendo um pouco estou aprendendo muito. E você é uma professora/mentora maravilhosa. Gratidão."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">HM</div>
+        <div>
+          <p class="depo-name">Hallyda Maffei</p>
+          <p class="depo-handle">@hallydamaffei</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="depo-card">
+      <p class="depo-text">"O Decora USA foi o melhor investimento que fiz nesse novo capítulo da minha vida. Cheguei nos EUA me sentindo perdida, sem saber por onde começar. Consegui um emprego rápido, mas queria mesmo era construir minha carreira solo.
+
+Procurei cursos e certificações, mas tudo parecia superficial. Eu precisava entender o mercado na prática — como cobrar, fazer contratos, onde comprar, enfim, o que ninguém ensina nos cursos tradicionais.
+
+Foi então que encontrei um vídeo seu sobre validação de diploma, entrei na Masterclass e percebi que o Decora USA tinha todas as respostas que eu buscava. As aulas são objetivas, aplicáveis e já mudaram minha visão sobre os projetos que estou tocando.
+
+Além do conteúdo, sua trajetória me inspirou muito. Ver que é possível construir uma carreira de sucesso aqui me deu coragem. Obrigada por compartilhar tanto, com tanta presença e generosidade."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">AF</div>
+        <div>
+          <p class="depo-name">Alessandra Fontes</p>
+          <p class="depo-handle">@ale_fontes</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <a href="https://pay.hotmart.com/J103014120A?off=cliawz1o" class="btn-cta">
