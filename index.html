@@ -36,68 +36,49 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HERO ─────────────────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, #0F3D35 0%, #1E6B5E 55%, #2A8A78 100%);
-      padding: 64px 20px 56px;
+    /* ── FOLD ÚNICO — headline + sub + vídeo ─────────── */
+    .fold {
+      background: linear-gradient(160deg, #0F3D35 0%, #1E6B5E 60%, #2A8A78 100%);
+      padding: 28px 20px 32px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
+    .fold::before {
       content: '';
       position: absolute;
       inset: 0;
       background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
     }
 
-    .hero-inner { position: relative; max-width: 820px; margin: 0 auto; }
-
-    .hero-eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.25);
-      color: #A8DDD8;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 18px;
-      border-radius: 100px;
-      margin-bottom: 28px;
+    .fold-inner {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 52px);
+    .fold h1 {
+      font-size: clamp(22px, 3.2vw, 38px);
       font-weight: 800;
       color: var(--white);
-      line-height: 1.18;
-      margin-bottom: 24px;
+      line-height: 1.2;
+      margin-bottom: 10px;
     }
+    .fold h1 em { font-style: normal; color: #7EE0D4; }
 
-    .hero h1 em {
-      font-style: normal;
-      color: #7EE0D4;
-    }
-
-    .hero-sub {
-      font-size: clamp(15px, 2vw, 19px);
-      color: rgba(255,255,255,.82);
-      max-width: 680px;
-      margin: 0 auto 0;
+    .fold-sub {
+      font-size: clamp(13px, 1.4vw, 16px);
+      color: rgba(255,255,255,.8);
+      max-width: 640px;
+      margin: 0 auto 18px;
       font-weight: 400;
-      line-height: 1.65;
+      line-height: 1.55;
     }
-    .hero-sub strong { color: #fff; font-weight: 600; }
-
-    /* ── VSL SECTION ──────────────────────────────────── */
-    .vsl-section {
-      background: var(--teal-xpale);
-      padding: 64px 20px 72px;
-    }
+    .fold-sub strong { color: #fff; font-weight: 600; }
 
     .vsl-container {
-      max-width: 860px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -511,11 +492,10 @@
 <body>
 
 <!-- ════════════════════════════════════════════
-     HERO
+     FOLD ÚNICO — headline + sub + VSL + CTA
 ════════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Assista ao vídeo completo antes de fechar</div>
+<section class="fold">
+  <div class="fold-inner">
 
     <h1>
       Como <em>arquitetas e designers</em> brasileiras<br>
@@ -523,18 +503,12 @@
       um business <em>lucrativo nos EUA</em>
     </h1>
 
-    <p class="hero-sub">
+    <p class="fold-sub">
       Mesmo sem diploma validado, sem inglês fluente e sem equipe.
-      <strong>Assista ao vídeo abaixo e descubra a estrutura estratégica que já transformou dezenas de carreiras.</strong>
+      <strong>Assista ao vídeo e descubra a estrutura estratégica que já transformou dezenas de carreiras.</strong>
     </p>
+
   </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════
-     VSL + CTA
-════════════════════════════════════════════ -->
-<section class="vsl-section">
   <div class="vsl-container">
 
     <!-- ── VÍDEO ──────────────────────────────
