@@ -122,7 +122,9 @@
       display: block;
     }
 
-    /* ── CTA BOX (aparece depois do vídeo) ───────────── */
+    /* ── CTA BOX (aparece no minuto 20 via Vturb delay) ── */
+    .esconder { display: none; }
+
     .cta-box {
       margin-top: 40px;
       background: var(--white);
@@ -130,11 +132,8 @@
       border-radius: var(--radius);
       padding: 40px 36px;
       text-align: center;
-      display: none; /* revelado via JS */
       box-shadow: var(--shadow);
     }
-
-    .cta-box.visible { display: block; }
 
     .cta-price-label {
       font-size: 13px;
@@ -552,8 +551,8 @@
       </script>
     </div>
 
-    <!-- ── CTA BOX (aparece depois do delay) ── -->
-    <div class="cta-box" id="ctaBox">
+    <!-- ── CTA BOX (aparece no minuto 20 via Vturb delay) ── -->
+    <div class="cta-box esconder" id="ctaBox">
       <p class="cta-price-label">Acesso imediato · Oferta especial</p>
       <p class="cta-original">De $1.497</p>
       <p class="cta-price"><span>$</span>997</p>
@@ -829,38 +828,17 @@
      JAVASCRIPT
 ════════════════════════════════════════════ -->
 <script>
-  /* ── Botão aparece após X segundos ─────────────────
-     Ajuste o valor abaixo (em segundos) conforme o
-     momento da VSL em que a oferta deve ser revelada.
-  ──────────────────────────────────────────────────── */
-  const CTA_DELAY_SECONDS = 600; // 10 minutos — ajuste conforme necessário
-
-  function revealCTA() {
-    const box = document.getElementById('ctaBox');
-    if (box) {
-      box.classList.add('visible');
-      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  // Revelar automaticamente após delay
-  const ctaTimer = setTimeout(revealCTA, CTA_DELAY_SECONDS * 1000);
-
-  /* ── Detecção de fim de vídeo (se usar <video>) ───── */
-  document.addEventListener('DOMContentLoaded', function () {
-    const vslVideo = document.querySelector('#vslWrapper video');
-    if (vslVideo) {
-      vslVideo.addEventListener('ended', function () {
-        clearTimeout(ctaTimer);
-        revealCTA();
-      });
-    }
+  /* ── Delay Vturb — minuto 20 (1200 segundos) ──────── */
+  var delaySeconds = 1200;
+  var player = document.querySelector("vturb-smartplayer");
+  player.addEventListener("player:ready", function () {
+    player.displayElements(delaySeconds, { persist: true });
   });
 
-  /* ── Play nos depoimentos ────────────────────────── */
+  /* ── Play nos depoimentos ─────────────────────────── */
   function playVideo(overlay) {
-    const wrapper = overlay.parentElement;
-    const video = wrapper.querySelector('video');
+    var wrapper = overlay.parentElement;
+    var video = wrapper.querySelector('video');
     if (video) {
       overlay.style.display = 'none';
       video.controls = true;
